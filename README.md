@@ -39,17 +39,6 @@ The API runs at `http://localhost:8080`.
 
 By default the app uses a local H2 database file at `backend/data/sttapp` and stores audio files in `backend/uploads`.
 
-Useful environment variables:
-
-```bash
-JWT_SECRET=replace-with-a-long-random-secret
-CORS_ALLOWED_ORIGINS=http://localhost:5173
-DATABASE_URL=jdbc:postgresql://localhost:5432/sttapp
-DATABASE_USERNAME=postgres
-DATABASE_PASSWORD=postgres
-DATABASE_DRIVER=org.postgresql.Driver
-UPLOAD_DIR=uploads
-```
 
 ## Frontend
 
@@ -86,14 +75,4 @@ com.sttapp.service.SpeechRecognitionService
 
 and replace `DemoSpeechRecognitionService` with Google Speech-to-Text, Azure Speech Services, Deepgram, AssemblyAI, or another provider.
 
-## API Endpoints
-
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| POST | `/api/auth/register` | Register user |
-| POST | `/api/auth/login` | Login user |
-| POST | `/api/speech/upload` | Upload audio file |
-| POST | `/api/speech/record` | Upload recorded audio |
-| GET | `/api/speech/history` | Get transcript history |
-| GET | `/api/speech/{id}` | Get one transcript |
 | GET | `/api/speech/{id}/download` | Download transcript text |
