@@ -24,16 +24,16 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
     private final JwtAuthFilter jwtAuthFilter;
     private final CustomUserDetailsService userDetailsService;
-    private final List<String> allowedOrigins;
+    private final List<String> allowedOriginPatterns;
 
     public SecurityConfig(
             JwtAuthFilter jwtAuthFilter,
             CustomUserDetailsService userDetailsService,
-            @Value("${app.cors.allowed-origins}") List<String> allowedOrigins
+            @Value("${app.cors.allowed-origin-patterns}") List<String> allowedOriginPatterns
     ) {
         this.jwtAuthFilter = jwtAuthFilter;
         this.userDetailsService = userDetailsService;
-        this.allowedOrigins = allowedOrigins;
+        this.allowedOriginPatterns = allowedOriginPatterns;
     }
 
     @Bean
@@ -72,7 +72,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(allowedOrigins);
+        config.setAllowedOriginPatterns(allowedOriginPatterns);
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
         config.setExposedHeaders(List.of("Content-Disposition"));

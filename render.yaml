@@ -8,5 +8,5 @@ services:
     envVars:
       - key: JWT_SECRET
         generateValue: true
-      - key: CORS_ALLOWED_ORIGINS
-        value: https://speech-t0text.onrender.com
+      - key: CORS_ALLOWED_ORIGIN_PATTERNS
+        value: https://speech-t0text.onrender.com,https://*.vercel.app

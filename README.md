@@ -63,6 +63,23 @@ To point the frontend at a different backend:
 VITE_API_URL=http://localhost:8080
 ```
 
+## Vercel Frontend Deploy
+
+Vercel can deploy the React/Vite frontend from the `frontend/` directory. Keep the Spring Boot backend on Render or another Java host, then set this Vercel environment variable:
+
+```bash
+VITE_API_URL=https://your-backend-url.onrender.com
+```
+
+Recommended Vercel project settings:
+
+- Root Directory: `frontend`
+- Framework Preset: `Vite`
+- Build Command: `npm run build`
+- Output Directory: `dist`
+
+The `frontend/vercel.json` file includes the same build/output settings and an SPA rewrite.
+
 ## Speech API Integration
 
 The current implementation uses `DemoSpeechRecognitionService`, which returns a placeholder transcript so the full MVP can be tested without cloud credentials.
