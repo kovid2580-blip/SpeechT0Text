@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: speech-t0text
+    runtime: java
+    plan: free
+    buildCommand: cd frontend && npm ci && npm run build && cd ../backend && rm -rf src/main/resources/static && mkdir -p src/main/resources/static && cp -r ../frontend/dist/. src/main/resources/static/ && mvn clean package -DskipTests
+    startCommand: cd backend && java -jar target/speech-to-text-api-0.0.1-SNAPSHOT.jar
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://speech-t0text.onrender.com

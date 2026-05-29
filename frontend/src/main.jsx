@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { Download, LogOut, Mic, MicOff, Trash2, UploadCloud } from 'lucide-react';
 import './styles.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080';
+const API_URL = import.meta.env.VITE_API_URL || (import.meta.env.DEV ? 'http://localhost:8080' : '');
 
 function displayAudioName(audioFile) {
   return audioFile?.replace(/^(Recording \d+)\.webm$/i, '$1') || '';
